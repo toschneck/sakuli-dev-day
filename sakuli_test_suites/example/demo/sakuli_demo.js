@@ -25,7 +25,7 @@
 _dynamicInclude($includeFolder);
 var testCase = new TestCase(60, 70);
 var env = new Environment();
-var appNotepad = new Application("gedit -b");
+var appNotepad = new Application("gedit");
 
 //vars consol.labs
 var $cl_home = "http://labs.consol.de/lang/en";
@@ -95,7 +95,11 @@ try {
 } catch (e) {
     testCase.handleException(e);
 } finally {
-    appNotepad.closeApp();
-    d
+    try {
+        appNotepad.closeApp();
+        env.type(Key.TAB + Key.ENTER);
+    } catch (e) {
+        testCase.handleException(e);
+    }
     testCase.saveResult();
 }

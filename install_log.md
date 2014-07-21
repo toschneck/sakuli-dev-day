@@ -5,7 +5,7 @@
 * Clone the dev day git repository and configure it for java start and start over `scripts/starter/START_testsuite1.sh`
   * `git clone https://github.com/toschneck/sakuli-dev-day.git`
   * move the alle files from the already unzipped folder to `sakuli-dev-day/binary`
-  * delete `sakuli-dev-day/binary/_include` and `sakuli-dev-day/binary/sakuli_test_suites` folder, because se are now dublicated
+  * delete `sakuli-dev-day/binary/_include` and `sakuli-dev-day/binary/sakuli_test_suites` folder, because these are now dublicated
   * Adjust the script starter file `binary/scripts/starter/START_testsuite1.sh` like follow:
     ```
     PROJECT_FOLDER=/home/sakuli/sakuli-workshop/sakuli-dev-day/binary

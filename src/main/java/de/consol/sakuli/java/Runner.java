@@ -1,9 +1,9 @@
 /**
- * Created by tschneck on 18.07.14.
+ * @author tschneck
  */
 package de.consol.sakuli.java;
 
-import de.consol.sakuli.datamodel.state.TestSuiteState;
+import de.consol.sakuli.datamodel.TestSuite;
 import de.consol.sakuli.starter.SakuliStarter;
 
 import java.io.FileNotFoundException;
@@ -17,11 +17,11 @@ public class Runner {
 
             String testSuiteFolder = "sakuli_test_suites/example";
             String includeFolder = "_include";
-            String sahiInstallationPath = "sahi";
 
-            final TestSuiteState resultState = SakuliStarter.runTestSuite(testSuiteFolder, includeFolder, sahiInstallationPath);
+            final TestSuite result = SakuliStarter.runTestSuite(testSuiteFolder, includeFolder);
 
-            exitState = resultState.getErrorCode();
+            exitState = result.getState().getErrorCode();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {

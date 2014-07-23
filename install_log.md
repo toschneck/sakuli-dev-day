@@ -17,3 +17,7 @@
 * Install missing `wmctrl` over `sudo apt-get install wmctrl`
 
 * Config proxy for sahi controller under `sahi/userdata/config/userdata.properties`
+
++* Install of missing native libs
++ * `apt-get install libcv2.4`
++ * `apt-get install libtesseract3`

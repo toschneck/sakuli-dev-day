@@ -18,6 +18,8 @@
 
 /* global _include,_alert, _navigateTo,_isFF,_isChrome, backEndInit, getFilePathOfTestcase, sakuliInit, writeTC2DB, _wait, navigate */
 
+
+
 /*************************************
  * Initialization of the JAVA backend
  * and set warning and critical time
@@ -32,21 +34,6 @@ var $cl_home = "http://labs.consol.de/lang/en";
 var $cl_projekte = "Projects";
 var $cl_c_mysql_h = "check_mysql_health";
 var $cl_c_oracle_h = "check_oracle_health";
-
-/**********
- * TAB+ALT
- *********/
-function switchWindow() {
-    env.type(Key.TAB, Key.ALT);
-}
-
-/***************
- * Go back to notepad
- **************/
-function backToNotepad() {
-    switchWindow();
-    env.type("Finish!\n\n");
-}
 
 
 /******************************
@@ -96,10 +83,39 @@ try {
     testCase.handleException(e);
 } finally {
     try {
-        appNotepad.closeApp();
-        env.type(Key.TAB + Key.ENTER);
+    //finally try to close the notepad
+    appNotepad.closeApp();
+    env.sleep(2);
+    env.setSimilarity(0.9);
+    //env.type(Key.TAB + Key.ENTER);
+    //or
+    var message = new Region("attention.png").find().grow(0,300);
+    message.highlight().find("close_without_saving.png").click();
+
+    //go to the desktop
+    new Region().find("desktop.png").click();
     } catch (e) {
         testCase.handleException(e);
     }
     testCase.saveResult();
+}
+
+/********************
+ * CUSTOM FUNCTIONS
+ *******************/
+
+
+/**********
+ * TAB+ALT
+ *********/
+function switchWindow() {
+    env.type(Key.TAB, Key.ALT);
+}
+
+/***************
+ * Go back to notepad
+ **************/
+function backToNotepad() {
+    switchWindow();
+    env.type("Finish!\n\n");
 }

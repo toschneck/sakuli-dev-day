@@ -3,6 +3,9 @@ Sakuli-Workshop am ConSol* DEV-day
 
 Der Fokus des Workshops wird darauf gelegt sein, welche Möglichkeiten es für den Einsatz von Sakuli aus DEV-Sicht gibt und in welche Richtung es in Zukunft gehen kann. Vorab Information findet ihr auf [GitHub](https://github.com/ConSol/sakuli).
 
+## API Link
+Link zur Sakuli - [API - Dokumenation](https://github.com/ConSol/sakuli/blob/master/docs/sakuli-api.md)
+
 ## Was ist das Ziel?
 
 * Es sollen erste Erfahrungen mit Sakuli gemacht werden, um die Einsatzmöglichkeiten abschätzen zu können und ein "Gefühl" für das was möglich ist zu bekommen.

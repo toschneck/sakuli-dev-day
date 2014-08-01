@@ -15,10 +15,11 @@ public class Runner {
         try {
 
 
-            String testSuiteFolder = "sakuli_test_suites/example";
+            String testSuiteExample = "sakuli_test_suites/example";
+            String testSuiteCM = "sakuli_test_suites/tschneck";
             String includeFolder = "_include";
 
-            final TestSuite result = SakuliStarter.runTestSuite(testSuiteFolder, includeFolder);
+            final TestSuite result = SakuliStarter.runTestSuite(testSuiteCM, includeFolder);
 
             exitState = result.getState().getErrorCode();
 

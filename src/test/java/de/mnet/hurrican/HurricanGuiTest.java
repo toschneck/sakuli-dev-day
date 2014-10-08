@@ -51,9 +51,41 @@ public class HurricanGuiTest extends AbstractSakuliTest {
 
     @Test
     public void hurrican1() throws Exception {
-        testling = startHurricanGUI();
-        testling.getRegion().highlight();
-        env.sleep(100);
+        Region hurricanRegion = startHurricanGUI();
+
+        //search and open customer
+        hurricanRegion.find("search_customer_logo.png").click();
+        hurricanRegion.waitForImage("filter_kunde_no.png", 10)
+                .click()
+                .type(Key.HOME).type("200000407").type(Key.ENTER);
+        hurricanRegion.waitForImage("search_result_beer.png", 10)
+                .doubleClick();
+
+        //open order
+        hurricanRegion.waitForImage("auftrag_dsl_18000.png", 10)
+                .doubleClick();
+        hurricanRegion.waitForImage("auftragdaten_window.png", 10)
+                .type(Key.RIGHT + Key.RIGHT)
+                .below(300)
+                .find("tab_carrierbestellung")
+                .click();
+
+        hurricanRegion.find("elektronischer_vorgang_bt.png").click();
+        hurricanRegion.find("kue_orn_button").click();
+        hurricanRegion.waitForImage("va_erzeugen_question.png", 5)
+                .type(Key.ENTER);
+
+        hurricanRegion.find("abg_carrier_drop_down")
+                .click()
+                .below(130)
+                .find("carrier_dtag").click();
+
+        hurricanRegion.find("kundenwunschtermin").click()
+                .type("22.12.2014")
+                .type("b", Key.ALT);
+
+        hurricanRegion.waitForImage("VA_erzeugt_info", 10)
+                .type(Key.ENTER);
 
     }
 
@@ -73,14 +105,15 @@ public class HurricanGuiTest extends AbstractSakuliTest {
      *
      * @return a {@link Application} object of the GUI
      */
-    private Application startHurricanGUI() {
+    private Region startHurricanGUI() {
         new Application("hurrican_gui\\ak-hurrican-gui.bat").open();
 
         new Region().exists("login-logo", 20)
                 .type("mnet2014!").type(Key.ENTER);
 
         new Region().exists("menu", 60);
-        return new Application("M-net HURRICAN");
+        testling = new Application("M-net HURRICAN");
+        return new Region(testling.getRegion());
     }
 
     /**

@@ -55,16 +55,16 @@ public class HurricanGuiTest extends AbstractSakuliTest {
     }
 
     @Test
-    public void hurricanDTAG() throws Exception {
+    public void hurricanDTAG() throws Throwable {
         createWbciForCarrier("carrier_dtag");
     }
 
     @Test
-    public void hurricanVFDE() throws Exception {
+    public void hurricanVFDE() throws Throwable {
         createWbciForCarrier("carrier_vodafone");
     }
 
-    private void createWbciForCarrier(String image_name_of_carrier) {
+    private void createWbciForCarrier(String image_name_of_carrier) throws Throwable {
         try {
             //check menu is visible
 

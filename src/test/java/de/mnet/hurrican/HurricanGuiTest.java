@@ -38,7 +38,7 @@ public class HurricanGuiTest extends AbstractSakuliTest {
 
     @Override
     protected String getTestSuiteFolder() {
-        return getTestSuiteRootFolder() + File.separator + "mnet-test-suite";
+        return getTestSuiteRootFolder() + File.separator + "hurrican-test-suite";
     }
 
     @Override
@@ -106,10 +106,6 @@ public class HurricanGuiTest extends AbstractSakuliTest {
             hurricanRegion.waitForImage("VA_erzeugt_info", 10)
                     .type(Key.ENTER);
 
-            //close windows
-            hurricanRegion.type("f", Key.ALT).type("s");
-
-
             //exception handling
         } catch (Throwable e) {
             SakuliExceptionHandler exceptionHandler = BeanLoader.loadBaseActionLoader().getExceptionHandler();
@@ -119,6 +115,9 @@ public class HurricanGuiTest extends AbstractSakuliTest {
                 exceptionHandler.handleException(e);
             }
             throw e;
+        } finally {
+            //close windows
+            hurricanRegion.type("f", Key.ALT).type("s");
         }
     }
 

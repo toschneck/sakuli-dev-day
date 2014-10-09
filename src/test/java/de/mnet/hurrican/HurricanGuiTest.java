@@ -98,6 +98,7 @@ public class HurricanGuiTest extends AbstractSakuliTest {
                     .click()
                     .below(130)
                     .find(image_name_of_carrier).click();
+            hurricanRegion.find("projektkenner").click().type("Hallo Mnet!");
             hurricanRegion.find("kundenwunschtermin").click()
                     .type("22.12.2014")
                     .type("b", Key.ALT);

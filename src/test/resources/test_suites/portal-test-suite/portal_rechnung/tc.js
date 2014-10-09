@@ -66,7 +66,7 @@ try {
     env.sleep(3);
     _highlight(_link("Rechnung Online"));
     _click(_link("Rechnung Online"));
-    _highlight(_heading2("Debitorennummer m000037146"));
+    _highlight(_heading2("Debitorennummer m000001351"));
     env.sleep(1);
     _highlight(_imageSubmitButton("rechnung_anzeigen.gif", _under(_heading2("Debitorennummer m000001351"))));
     env.sleep(1);

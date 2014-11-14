@@ -3,8 +3,11 @@ core/target
 integration-test/target
 integration-test/temp-db-sahi
 install/*.zip
-**/_logs
+**/_logs/*
 sahi
 .idea
 *.iml
 *.log
+**/firefox
+**/chrome-portable
+privoxy

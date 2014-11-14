@@ -24,24 +24,24 @@ var env = new Environment();
 var screen = new Region();
 
 try {
-//    var $startUrl = "http://www.m-net.de";
-//    var $startUrl = "http://mnettestshop-prelive/is-bin/INTERSHOP.enfinity/WFS/MNET-STORE-Site/de_DE/-/EUR/ViewApplication-StartAgent?AgentName=online-shop-kengelna&PosCode=0007";
-//    _navigateTo($startUrl);
     _highlight(_link("Internet & Telefon"));
     _mouseOver(_link("Internet & Telefon"));
+    env.sleep(1);
     _highlight(_link("Surf-Flat 100"));
     _click(_link("Surf-Flat 100"));
-//    env.sleep(999);
+    env.sleep(3);
+    testCase.endOfStep("select SF 100", 8);
 
 
     _highlight(_span("Zusatzoptionen"));
     _click(_span("Zusatzoptionen"));
+    _focus(_link("Jetzt bestellen"));
     _highlight(_link("Jetzt bestellen"));
     _click(_link("Jetzt bestellen"));
+    env.sleep(1);
     _highlight(_textbox("ZipCode[1]"));
     _setValue(_textbox("ZipCode[1]"), "80804");
     _click(_link("80804"));
-
     _highlight(_textbox("StreetWithDistrict[1]"));
     _setValue(_textbox("StreetWithDistrict[1]"), "Düsseldorfer Str.");
     _highlight(_link("Düsseldorfer Str."));
@@ -50,15 +50,22 @@ try {
     _setValue(_textbox("HouseNumberWithExtension[1]"), "13");
     _highlight(_submit("Verfügbarkeit prüfen[1]"));
     _click(_submit("Verfügbarkeit prüfen[1]"));
+    env.sleep(3);
+    testCase.endOfStep("check availability", 15);
+
+
     _highlight(_submit("Weiter[1]"));
     _click(_submit("Weiter[1]"));
     _highlight(_textbox("couponInput"));
     _setValue(_textbox("couponInput"), "SFGS25");
+    env.sleep(1);
     _highlight(_submit("Code einlösen"));
     _click(_submit("Code einlösen"));
-
     _highlight(_span("Der Aktionscode SFG25 wurde eingelöst"));
     _assert(_isVisible(_span("Der Aktionscode SFG25 wurde eingelöst")));
+    env.sleep(3);
+    testCase.endOfStep("check coupon SFG25", 10);
+
     _highlight(_submit("Weiter"));
     _click(_submit("Weiter"));
     _highlight(_select("PersonalDataForm_Salutation"));
@@ -89,15 +96,24 @@ try {
     _setValue(_textbox("PaymentForm_Iban"), "DE42720500000000066555");
     _highlight(_textbox("PaymentForm_Bic"));
     _setValue(_textbox("PaymentForm_Bic"), "AUGSDE77XXX");
-    _highlight(_submit("Weiter"));
-    _click(_submit("Weiter"));
-    _highlight(_submit("Weiter"));
-    _click(_submit("Weiter"));
+    env.sleep(3);
+    testCase.endOfStep("insert contact data", 15);
 
+    _highlight(_submit("Weiter"));
+    _click(_submit("Weiter"));
+    env.sleep(1);
+    _highlight(_submit("Weiter"));
+    _click(_submit("Weiter"));
     _highlight(_link("Allgemeinen Geschäftsbedingungen"));
+    //_click(_link("Allgemeinen Geschäftsbedingungen"));
+    testCase.endOfStep("validate AGBs", 20);
 
-    _click(_link("Allgemeinen Geschäftsbedingungen"));
-
+    _highlight(_checkbox("SummaryForm_AGB"));
+    _click(_checkbox("SummaryForm_AGB"));
+    _highlight(_checkbox("SummaryForm_Bonitaet"));
+    _click(_checkbox("SummaryForm_Bonitaet"));
+    _highlight(_checkbox("SummaryForm_Widerruf"));
+    _click(_checkbox("SummaryForm_Widerruf"));
 //TODO TS validate PDF
 //_saveDownloadedAs("C:/sakuli/sahi/userdata/temp/download/agb1.pdf");
 //var appAdobeReader = new Application("AcroRd32.exe " + "C:/sakuli/sahi/userdata/temp/download/agb1.pdf");
@@ -107,5 +123,6 @@ try {
     testCase.handleException(e);
 } finally {
     testCase.saveResult();
+    //env.sleep(999);
 }
 

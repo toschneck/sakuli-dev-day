@@ -17,6 +17,7 @@ import org.testng.annotations.Test;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,13 +35,18 @@ public class KeyEventTest extends AbstractSakuliTest {
     }
 
     @Override
+    protected String getTestSuiteRootFolder() {
+        return Paths.get("sakuli_test_suites").toAbsolutePath().toString();
+    }
+
+    @Override
     protected String getTestSuiteFolder() {
-        return getTestSuiteRootFolder() + File.separator + "sakuli-test-suite";
+        return getTestSuiteRootFolder() + File.separator + "sakuli-dev-test-suite";
     }
 
     @Override
     protected String getIncludeFolder() {
-        return "_include";
+        return "mnet_sakuli_inst/sakuli/_include";
     }
 
     @Test

@@ -1,11 +1,6 @@
 _dynamicInclude($includeFolder);
-var testCase = new TestCase(60, 70);
-var env = new Environment();
-var screen = new Region();
-
+var testCase = new TestCase(5, 10);
 try {
-
-    _navigateTo("http://www.m-net.de/regio");
     _highlight(_image("Logo"));
     _assert(_isVisible(_image("Logo")));
 

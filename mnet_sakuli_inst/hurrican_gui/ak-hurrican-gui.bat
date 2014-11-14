@@ -16,7 +16,7 @@ title=Hurrican II
 
 set HUR_JAVA="C:\Program Files\Java\jdk1.7.0_21\bin"
 
-set ROOT=C:\Project\sakuli-dev-day\hurrican_gui
+set ROOT=C:\Project\sakuli-dev-day\mnet_sakuli_inst\hurrican_gui
 set CLASSPATH=%ROOT%\hurrican-gui.jar;%ROOT%\config
 
 

@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.nio.file.Paths;
 
 /**
  * @author Tobias Schneck
@@ -37,13 +38,18 @@ public class HurricanGuiTest extends AbstractSakuliTest {
     }
 
     @Override
+    protected String getTestSuiteRootFolder() {
+        return Paths.get("mnet_sakuli_inst/sakuli_test_suites").toAbsolutePath().toString();
+    }
+
+    @Override
     protected String getTestSuiteFolder() {
         return getTestSuiteRootFolder() + File.separator + "hurrican-test-suite";
     }
 
     @Override
     protected String getIncludeFolder() {
-        return "_include";
+        return "mnet_sakuli_inst/sakuli/_include";
     }
 
     @BeforeClass
@@ -84,14 +90,15 @@ public class HurricanGuiTest extends AbstractSakuliTest {
             hurricanRegion.waitForImage("auftragdaten_window.png", 10)
                     .type(Key.RIGHT + Key.RIGHT)
                     .below(300)
-                    .find("tab_carrierbestellung")
+                    .waitForImage("tab_carrierbestellung", 10)
                     .click();
 
             //create WBCI Vorabstimmung
             hurricanRegion.find("elektronischer_vorgang_bt.png").click();
             hurricanRegion.find("kue_orn_button").click();
-            hurricanRegion.waitForImage("va_erzeugen_question.png", 5)
-                    .type(Key.ENTER);
+            if (hurricanRegion.exists("va_erzeugen_question.png", 5) != null) {
+                hurricanRegion.type(Key.ENTER);
+            }
 
             //enter carrier and kundwunschtermin
             hurricanRegion.find("abg_carrier_drop_down")
@@ -139,10 +146,10 @@ public class HurricanGuiTest extends AbstractSakuliTest {
      * @return a {@link Application} object of the GUI
      */
     private Region startHurricanGUI() {
-        new Application("hurrican_gui\\ak-hurrican-gui.bat").open();
+        new Application("mnet_sakuli_inst\\hurrican_gui\\ak-hurrican-gui.bat").open();
 
         new Region().exists("login-logo", 20)
-                .typeAndDecrypt("SsgmIsfSec+9wxbORZz03Q==").type(Key.ENTER);
+                .typeAndDecrypt("msToDD0SUJyD+C47ZRWn7w==").type(Key.ENTER);
 
         new Region().exists("menu", 60);
         testling = new Application("M-net HURRICAN");

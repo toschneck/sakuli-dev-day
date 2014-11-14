@@ -24,14 +24,14 @@ import java.util.List;
  */
 
 @Test(groups = AbstractSakuliTest.SAKULI_TEST)
-public class PortalWebTest {
+public class OnlineShopTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(PortalWebTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(OnlineShopTest.class);
 
     @Test
     public void testPortal() throws Throwable {
 
-        Path testsuite = Paths.get("mnet_sakuli_inst/sakuli_test_suites/portal-test-suite");
+        Path testsuite = Paths.get("mnet_sakuli_inst/sakuli_test_suites/mnet_online_shop");
         String includeFolder = "mnet_sakuli_inst/sakuli/_include";
 
         final TestSuite result = SakuliStarter.runTestSuite(testsuite.toString(), includeFolder);

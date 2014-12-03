@@ -22,6 +22,7 @@ _dynamicInclude($includeFolder);
 var testCase = new TestCase(60, 70);
 var env = new Environment();
 var screen = new Region();
+var $pdfSurfix = "AGB";
 
 try {
     _highlight(_link("Internet & Telefon"));
@@ -97,15 +98,24 @@ try {
     _highlight(_textbox("PaymentForm_Bic"));
     _setValue(_textbox("PaymentForm_Bic"), "AUGSDE77XXX");
     env.sleep(3);
-    testCase.endOfStep("insert contact data", 15);
-
     _highlight(_submit("Weiter"));
     _click(_submit("Weiter"));
     env.sleep(1);
     _highlight(_submit("Weiter"));
     _click(_submit("Weiter"));
+    testCase.endOfStep("insert contact data", 15);
+
+    var $pdfFileLocation = _resolvePath() + $pdfSurfix + ".pdf";
+    env.logInfo($pdfFileLocation);
+    _click(_link("Allgemeinen Geschäftsbedingungen"));
     _highlight(_link("Allgemeinen Geschäftsbedingungen"));
-    //_click(_link("Allgemeinen Geschäftsbedingungen"));
+    _saveDownloadedAs($pdfFileLocation);
+    env.type("w", Key.CTRL);
+    _focus(_link("Allgemeinen Geschäftsbedingungen"));
+    env.sleep(3);
+    openPdfFile($pdfFileLocation);
+    screen.find("agb_mnet.png").highlight();
+    closePdfReader();
     testCase.endOfStep("validate AGBs", 20);
 
     _highlight(_checkbox("SummaryForm_AGB"));
@@ -114,15 +124,51 @@ try {
     _click(_checkbox("SummaryForm_Bonitaet"));
     _highlight(_checkbox("SummaryForm_Widerruf"));
     _click(_checkbox("SummaryForm_Widerruf"));
-//TODO TS validate PDF
-//_saveDownloadedAs("C:/sakuli/sahi/userdata/temp/download/agb1.pdf");
-//var appAdobeReader = new Application("AcroRd32.exe " + "C:/sakuli/sahi/userdata/temp/download/agb1.pdf");
-//appAdobeReader.open();
+    _highlight(_checkbox("SummaryForm_Bankeinzug"));
+    _click(_checkbox("SummaryForm_Bankeinzug"));
+
+    var regExTestSystem = /.*\.intern\.m-net\.de.*/;
+    if (testCase.getLastURL().match(regExTestSystem)) {
+        _focus(_submit("Kostenpflichtig bestellen"));
+        _highlight(_submit("Kostenpflichtig bestellen"));
+        _click(_submit("Kostenpflichtig bestellen"));
+
+        //validate the confirm text
+        _assert(_isVisible(_heading1("Vielen Dank für Ihre Bestellung!")));
+        _highlight(_heading1("Vielen Dank für Ihre Bestellung!"));
+
+    } else {
+        env.logInfo("Don't send the order, in case of productive system URL: " + testCase.getLastURL());
+    }
+    testCase.endOfStep("confirm and send the order", 15);
 
 } catch (e) {
     testCase.handleException(e);
 } finally {
     testCase.saveResult();
+    closePdfReader();
     //env.sleep(999);
 }
 
+/**
+ * open the assigned file in the default PDF reader.
+ *
+ * @param $pdfFileLocation
+ * @returns {Application}
+ */
+function openPdfFile($pdfFileLocation) {
+    var appPdfReader = new Application('cmd.exe /C \"start ' + $pdfFileLocation + '"');
+    appPdfReader.open();
+    return appPdfReader;
+}
+
+var alreadyClosed = false;
+/**
+ * close the already opend PDF reader with the $pdfSurfix
+ */
+function closePdfReader() {
+    if (!alreadyClosed) {
+        new Application("undefined" + $pdfSurfix).focus().closeApp();
+        alreadyClosed = true;
+    }
+}

@@ -25,8 +25,8 @@ try {
     _highlight(_link("Geschäftskunden"));
     _assert(_isVisible(_link("Geschäftskunden")));
 
-    _highlight(_link("Glasfaserausbau"));
-    _assert(_isVisible(_link("Glasfaserausbau")));
+    _highlight(_link(/Glasfaser.*/));
+    _assert(_isVisible(_link(/Glasfaser.*/)));
 
 } catch (e) {
     testCase.handleException(e);

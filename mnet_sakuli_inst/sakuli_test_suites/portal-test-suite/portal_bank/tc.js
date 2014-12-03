@@ -61,7 +61,7 @@ try {
 
     _highlight(_link("Hauptmenü"));
     _click(_link("Hauptmenü"));
-    testCase.endOfStep("createUser 'bebitalia'", 15);
+    testCase.endOfStep("createUser bebitalia", 15);
 
     env.sleep(3);
     _highlight(_link("Vertragsdaten"));
@@ -82,7 +82,7 @@ try {
         .highlight()
         .type(Key.F4, Key.ALT)
         .type("n");
-    testCase.endOfStep("validate Bankverbindung änderen", 18);
+    testCase.endOfStep("validate Bankverbindung aendern", 18);
 
     env.sleep(2);
     _click(_link("Logout"));

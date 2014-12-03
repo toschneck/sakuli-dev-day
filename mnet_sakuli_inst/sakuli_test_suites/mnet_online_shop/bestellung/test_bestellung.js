@@ -65,7 +65,7 @@ try {
     _highlight(_span("Der Aktionscode SFG25 wurde eingelöst"));
     _assert(_isVisible(_span("Der Aktionscode SFG25 wurde eingelöst")));
     env.sleep(3);
-    testCase.endOfStep("check coupon SFG25", 10);
+    testCase.endOfStep("check coupon SFG25", 15);
 
     _highlight(_submit("Weiter"));
     _click(_submit("Weiter"));

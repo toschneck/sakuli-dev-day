@@ -135,7 +135,7 @@ try {
     } else {
         env.logInfo("Don't send the contact formula, in case of productive system URL: " + testCase.getLastURL());
     }
-    testCase.endOfStep("send form to Mnet", 8);
+    testCase.endOfStep("send form to Mnet", 12);
 
 } catch (e) {
     testCase.handleException(e);

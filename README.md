@@ -5,7 +5,7 @@ Der Fokus des Workshops wird darauf gelegt sein, welche Möglichkeiten es für d
 
 Information findet ihr auf:
 * [GitHub - Sakuli](https://github.com/ConSol/sakuli).
-* [Sakuli - Einführungspresentation](https://rawgit.com/toschneck/presenation/sakuli-dev-day-presentation/index.html#/)
+* [Sakuli - Einführungspresentation](https://rawgit.com/toschneck/presentation/sakuli-dev-day-presentation/index.html#/)
 
 
 ## API Link

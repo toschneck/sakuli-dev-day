@@ -3,11 +3,11 @@
 #
 #
 #project folder: default def
-PROJECT_FOLDER=/home/sakuli/sakuli-workshop/sakuli-dev-day/binary
+PROJECT_FOLDER=/home/tschneck/git-files/sakuli-dev-day/binary
 echo project-folder: $PROJECT_FOLDER
 
 #define your test suite folder here:
-TEST_SUITE_FOLDER=$PROJECT_FOLDER/../sakuli_test_suites/example
+TEST_SUITE_FOLDER=$PROJECT_FOLDER/../sakuli_test_suites/tschneck
 echo suite-folder: $TEST_SUITE_FOLDER
 
 #internal folders for application logic

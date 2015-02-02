@@ -8,5 +8,5 @@
 //
 //SIT01:
 landingpage/test_landingpage.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE/-/EUR/ViewStandardCatalog-Browse?CategoryRef=Regio@MNET-PK-Home&et_cid=120&et_lid=51006&et_sub=regio
-bestellung/test_bestellung.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE
-kontaktformular/test_kontaktformular.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE
+//bestellung/test_bestellung.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE
+//kontaktformular/test_kontaktformular.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE

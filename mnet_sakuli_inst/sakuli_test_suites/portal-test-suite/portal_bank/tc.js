@@ -84,7 +84,7 @@ try {
         .type("n");
     testCase.endOfStep("validate Bankverbindung aendern", 18);
 
-    env.sleep(2);
+    _highlight(_link("Logout"));
     _click(_link("Logout"));
 
 } catch (e) {

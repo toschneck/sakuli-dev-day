@@ -61,7 +61,7 @@ try {
 
     _highlight(_link("Hauptmenü"));
     _click(_link("Hauptmenü"));
-    testCase.endOfStep("createUser 'bebitalia'", 15);
+    testCase.endOfStep("createUser bebitalia", 15);
 
     env.sleep(3);
     _highlight(_link("Rechnung Online"));
@@ -83,6 +83,7 @@ try {
     _saveDownloadedAs($filename);
     testCase.endOfStep("validate download", 5);
 
+    _highlight(_link("Logout"));
     _click(_link("Logout"));
 
 } catch (e) {

@@ -5,13 +5,59 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.consol.sakuli</groupId>
-    <artifactId>java-runner</artifactId>
+    <artifactId>testsuite-mnet</artifactId>
     <version>0.1.0-SNAPSHOT</version>
 
     <properties>
         <sakuli.version>0.4.8-SNAPSHOT</sakuli.version>
         <hurrican.version>17.0.0-SNAPSHOT</hurrican.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>install-sakuli-binaries</id>
+            <build>
+
+                <plugins>
+                    <!-- delete old sakuli installatin -->
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.6.1</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>mnet_sakuli_inst/sakuli</directory>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <!-- extract current build -->
+                    <plugin>
+                        <groupId>com.googlecode.maven-download-plugin</groupId>
+                        <artifactId>download-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>install-sakuli</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>
+                                        http://labs.consol.de/sakuli/install/sakuli-zipped-release-v${sakuli.version}.zip
+                                    </url>
+                                    <unpack>true</unpack>
+                                    <outputDirectory>mnet_sakuli_inst</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>de.consol.sakuli</groupId>

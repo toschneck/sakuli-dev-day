@@ -1,6 +1,20 @@
 _dynamicInclude($includeFolder);
 var testCase = new TestCase(5, 10);
+var env = new Environment();
 try {
+    function getImageKeySet() {
+        var keySet = Packages.de.consol.sakuli.loader.BeanLoader.loadBaseActionLoader().getImageLib().keySet();
+        env.logInfo('Keys: ' + keySet);
+
+        var iterrator = keySet.iterator();
+        while (iterrator.hasNext()) {
+            env.logInfo('Key: ' + iterrator.next());
+        }
+        return keySet;
+    }
+
+    var images = getImageKeySet();
+
     _highlight(_image("Logo"));
     _assert(_isVisible(_image("Logo")));
 

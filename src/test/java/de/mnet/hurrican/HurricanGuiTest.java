@@ -107,7 +107,7 @@ public class HurricanGuiTest extends AbstractSakuliTest {
                     .find(image_name_of_carrier).click();
             hurricanRegion.find("projektkenner").click().type("Hallo Mnet!");
             hurricanRegion.find("kundenwunschtermin").click()
-                    .type("22.12.2014")
+                    .type("24.02.2015")
                     .type("b", Key.ALT);
 
             //check if dialog "VA erzeugt" occurs
@@ -149,7 +149,7 @@ public class HurricanGuiTest extends AbstractSakuliTest {
         new Application("mnet_sakuli_inst\\hurrican_gui\\ak-hurrican-gui.bat").open();
 
         new Region().exists("login-logo", 20)
-                .typeAndDecrypt("msToDD0SUJyD+C47ZRWn7w==").type(Key.ENTER);
+                .typeAndDecrypt("GGbUtFUdJYR4C7khcwGZ/Q==").type(Key.ENTER);
 
         new Region().exists("menu", 60);
         testling = new Application("M-net HURRICAN");

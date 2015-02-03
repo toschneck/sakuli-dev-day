@@ -2,11 +2,11 @@
 // testcase_folder/testcase.sah http://www.starturl.de
 //
 //PROD:
-//landingpage/test_landingpage.js http://www.m-net.de/regio
-//bestellung/test_bestellung.js http://www.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-STORE-Site
-//kontaktformular/test_kontaktformular.js http://www.m-net.de
+landingpage/test_landingpage.js http://www.m-net.de/regio
+//bestellung/test_bestellung.js http://www.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/
+kontaktformular/test_kontaktformular.js http://www.m-net.de
 //
 //SIT01:
-landingpage/test_landingpage.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE/-/EUR/ViewStandardCatalog-Browse?CategoryRef=Regio@MNET-PK-Home&et_cid=120&et_lid=51006&et_sub=regio
+//landingpage/test_landingpage.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE/-/EUR/ViewStandardCatalog-Browse?CategoryRef=Regio@MNET-PK-Home&et_cid=120&et_lid=51006&et_sub=regio
 //bestellung/test_bestellung.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE
 //kontaktformular/test_kontaktformular.js http://webshop-prelive.intern.m-net.de/is-bin/INTERSHOP.enfinity/WFS/MNET-PK-Site/de_DE

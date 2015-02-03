@@ -48,6 +48,7 @@
                                     <url>
                                         http://labs.consol.de/sakuli/install/sakuli-zipped-release-v${sakuli.version}.zip
                                     </url>
+                                    <skipCache>true</skipCache>
                                     <unpack>true</unpack>
                                     <outputDirectory>mnet_sakuli_inst</outputDirectory>
                                 </configuration>

@@ -26,13 +26,15 @@
 _dynamicInclude($includeFolder);
 var testCase = new TestCase(60, 70);
 var env = new Environment();
+var screen = new Region();
+var notClosed = [];
 
 /******************************
  * Description of the test case
  ******************************/
 try {
 
-    _navigateTo("https://kundenportal-dev.mnet-online.de");
+    _wait(5000, _isVisible(_image("M-net")));
     if (!_condition(_exists(_textbox("username")))) {
         _click(_link("Administrator"));
     }
@@ -66,23 +68,33 @@ try {
     env.sleep(3);
     _highlight(_link("Rechnung Online"));
     _click(_link("Rechnung Online"));
-    _highlight(_heading2("Debitorennummer m000001351"));
+    _highlight(_heading2("Debitorennummer m000037146"));
     env.sleep(1);
-    _highlight(_imageSubmitButton("rechnung_anzeigen.gif", _under(_heading2("Debitorennummer m000001351"))));
+    _highlight(_imageSubmitButton("rechnung_anzeigen.gif", _under(_heading2("Debitorennummer m000037146"))));
     env.sleep(1);
-    _click(_imageSubmitButton("rechnung_anzeigen.gif", _under(_heading2("Debitorennummer m000001351"))));
+    _click(_imageSubmitButton("rechnung_anzeigen.gif", _under(_heading2("Debitorennummer m000037146"))));
     testCase.endOfStep("open Rechnung July", 10);
 
+    //Download and validate PDF
+    var $filename = testCase.getTestCaseFolderPath() + '\\invoice.pdf';
+    env.logInfo("filename for pdf => " + $filename);
     _highlight(_image("Download", _near(_cell("Jul"))));
     env.sleep(1);
     _click(_image("Download", _near(_cell("Jul"))));
-    var $curPath = _resolvePath();
-    var $filename = $curPath + "invoice.pdf";
-    env.logInfo("filename for pdf => " + $filename);
+    env.sleep(3);
+    //pdf validation
     _assertNotNull(_lastDownloadedFileName());
     _saveDownloadedAs($filename);
-    testCase.endOfStep("validate download", 5);
+    openPdfFile($filename);
+    screen.waitForImage("invoice_address", 10);
+    screen.find("customer_no");
+    screen.find("invoice_amount");
+    env.type(Key.F4, Key.ALT);
+    notClosed.pop();
+    env.sleep(1);
+    testCase.endOfStep("validate download", 20);
 
+    env.type(Key.F5);
     _highlight(_link("Logout"));
     _click(_link("Logout"));
 
@@ -90,4 +102,31 @@ try {
     testCase.handleException(e);
 } finally {
     testCase.saveResult();
+    closePdfReader();
+}
+
+
+/**
+ * open the assigned file in the default PDF reader.
+ *
+ * @param $pdfFileLocation
+ * @returns {Application}
+ */
+function openPdfFile($pdfFileLocation) {
+    var appPdfReader = new Application('cmd.exe /C \"start ' + $pdfFileLocation + '"');
+    appPdfReader.open();
+    notClosed.push($pdfFileLocation);
+    return appPdfReader;
+}
+
+/**
+ * close the already opend PDF reader in var 'notClosed'
+ */
+function closePdfReader() {
+    notClosed.forEach(function ($file) {
+        if ($file != undefined) {
+            //remove file path and ending
+            new Application($file.replace(/.pdf/, '').replace(/.*\\/, ''), true).focus().closeApp();
+        }
+    });
 }

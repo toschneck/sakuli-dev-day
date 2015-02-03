@@ -1,4 +1,10 @@
 // format: 
 // testcase_folder/testcase.sah http://www.starturl.de
-portal_bank/tc.js https://kundenportal-dev.mnet-online.de
-portal_rechnung/tc.js https://kundenportal-dev.mnet-online.de
+//
+// DEV:
+//portal_bank/tc.js https://kundenportal-dev.mnet-online.de
+//portal_rechnung/tc.js https://kundenportal-dev.mnet-online.de
+//
+// SIT-01:
+portal_bank/tc.js https://kundenportal-sit01.mnet-online.de
+portal_rechnung/tc.js https://kundenportal-sit01.mnet-online.de

@@ -32,7 +32,7 @@ var env = new Environment();
  ******************************/
 try {
 
-    _navigateTo("https://kundenportal-dev.mnet-online.de");
+    _wait(5000, _isVisible(_image("M-net")));
     if (!_condition(_exists(_textbox("username")))) {
         _click(_link("Administrator"));
     }
@@ -84,6 +84,7 @@ try {
         .type("n");
     testCase.endOfStep("validate Bankverbindung aendern", 18);
 
+    env.type(Key.F5);
     _highlight(_link("Logout"));
     _click(_link("Logout"));
 
